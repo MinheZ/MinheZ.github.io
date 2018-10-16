@@ -442,6 +442,7 @@
 <h4 id="2-2-2-在GitHub上添加SSH-Key"><a href="#2-2-2-在GitHub上添加SSH-Key" class="headerlink" title="2.2.2 在GitHub上添加SSH Key"></a>2.2.2 在GitHub上添加SSH Key</h4><p>在个人主页右上角上点击倒三角，进入Setting<br><img src="https://i.imgur.com/57zAVCm.png" alt=""><br>点击new SSH key，再把刚才的公钥复制粘贴进去。SSHKey添加成功之后，可以输入ssh-T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>进行测试，出现以下图片样式则证明成功。<br><img src="https://i.imgur.com/Mbj4th3.png" alt=""></p>
 <h2 id="创建GitHub仓库"><a href="#创建GitHub仓库" class="headerlink" title="创建GitHub仓库"></a>创建GitHub仓库</h2><p>这一波比较关键！！！下图是新建一个repositories（仓库），此处注意项目的名称一定是：你的名字+.github.io，例如笔者的是MinheZ.github.io。<br><img src="https://i.imgur.com/TznCa3E.png" alt=""></p>
 <h2 id="4-设置本地博客的配置"><a href="#4-设置本地博客的配置" class="headerlink" title="4 设置本地博客的配置"></a>4 设置本地博客的配置</h2><h3 id="4-1-安装Hexo"><a href="#4-1-安装Hexo" class="headerlink" title="4.1 安装Hexo"></a>4.1 安装Hexo</h3><p>在一个合适的地方创建一个文件夹，然后再文件夹空白处按住Shift+鼠标右键，在此处打开Git bash命令行窗口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在命令行输入 npm install -g hexo</span><br></pre></td></tr></table></figure></p>
+<p>注意：笔者在此过程中遇到过 E404报错，详细内容忘记截图=。=，原因是npm在国内被墙，使用镜像服务器就可以了，此处仅为读者提供一种思路，并不一定是有效方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
 <p>然后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入 npm install hexo --save</span><br></pre></td></tr></table></figure></p>
 <p>可以输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v 来检查hexo是否安装成功</span><br></pre></td></tr></table></figure></p>
 <h3 id="4-2-初始化Hexo"><a href="#4-2-初始化Hexo" class="headerlink" title="4.2 初始化Hexo"></a>4.2 初始化Hexo</h3><p>在命令窗口中继续输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init，等待下载好之后输入hexo s</span><br></pre></td></tr></table></figure></p>
@@ -452,6 +453,7 @@
 <h2 id="5-主题太丑怎么办"><a href="#5-主题太丑怎么办" class="headerlink" title="5 主题太丑怎么办"></a>5 主题太丑怎么办</h2><p>命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
 <p>等待下载完成之后，打开配置文件_config_yml，找到theme将next替换原来默认的landscape。然后在命令窗口下<br><code>bash
 输入 hexo clean, hexo g, hexo s, 本地确认样子之后再hexo d部署至GitHub</code><img src="https://i.imgur.com/k56iJO6.png" alt=""></p>
+<p>至此，博客环境就搭建完成，谢谢观看！</p>
 
           
         
