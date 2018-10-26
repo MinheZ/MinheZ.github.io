@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Tomcat Service," />
 
 
 
@@ -79,13 +79,41 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="LAZI">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="如何在InteliJ上配置Tomcat进行web开发1.写在前面最近开始接触Java当中的web开发，由于习惯了InteliJ的“智能操作”，于是自己花了一整天研究如何在InteliJ上面部署Tomcat的servlet项目（忽视笔者太菜），在此记录搭建的操作流程，希望帮到跟我一样刚入门的人，少走弯路~ 尊重劳动果实，转载注明出处！ 2.正式开始，新建工程首先，新建一个工程，如下图  选择Java">
+<meta name="keywords" content="Tomcat Service">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setup your Tomcat server on IDEA">
+<meta property="og:url" content="http://yoursite.com/2018/10/26/Setup-your-Tomcat-server-on-IDEA/index.html">
 <meta property="og:site_name" content="LAZI">
+<meta property="og:description" content="如何在InteliJ上配置Tomcat进行web开发1.写在前面最近开始接触Java当中的web开发，由于习惯了InteliJ的“智能操作”，于是自己花了一整天研究如何在InteliJ上面部署Tomcat的servlet项目（忽视笔者太菜），在此记录搭建的操作流程，希望帮到跟我一样刚入门的人，少走弯路~ 尊重劳动果实，转载注明出处！ 2.正式开始，新建工程首先，新建一个工程，如下图  选择Java">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/taXNm27.png">
+<meta property="og:image" content="https://i.imgur.com/j1zryaV.png">
+<meta property="og:image" content="https://i.imgur.com/5SbRb8f.png">
+<meta property="og:image" content="https://i.imgur.com/wOyB2cE.png">
+<meta property="og:image" content="https://i.imgur.com/8KerabY.png">
+<meta property="og:image" content="https://i.imgur.com/nI513vK.png">
+<meta property="og:image" content="https://i.imgur.com/FAS3QVh.png">
+<meta property="og:image" content="https://i.imgur.com/daZmLRi.png">
+<meta property="og:image" content="https://i.imgur.com/9TA8QLu.png">
+<meta property="og:image" content="https://i.imgur.com/UI0gUaA.png">
+<meta property="og:image" content="https://i.imgur.com/BIa010j.png">
+<meta property="og:image" content="https://i.imgur.com/kAP4P19.png">
+<meta property="og:image" content="https://i.imgur.com/mo293tJ.png">
+<meta property="og:image" content="https://i.imgur.com/rrw407d.png">
+<meta property="og:image" content="https://i.imgur.com/upUHQB1.png">
+<meta property="og:image" content="https://i.imgur.com/ciSCqZj.png">
+<meta property="og:image" content="https://i.imgur.com/djvFTS2.png">
+<meta property="og:image" content="https://i.imgur.com/4RUvBfa.png">
+<meta property="og:image" content="https://i.imgur.com/iywlvTr.png">
+<meta property="og:image" content="https://i.imgur.com/lOruDoN.png">
+<meta property="og:image" content="https://i.imgur.com/7PY3Khw.png">
+<meta property="og:image" content="https://i.imgur.com/UM6LsXE.png">
+<meta property="og:updated_time" content="2018-10-26T02:14:12.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LAZI">
+<meta name="twitter:title" content="Setup your Tomcat server on IDEA">
+<meta name="twitter:description" content="如何在InteliJ上配置Tomcat进行web开发1.写在前面最近开始接触Java当中的web开发，由于习惯了InteliJ的“智能操作”，于是自己花了一整天研究如何在InteliJ上面部署Tomcat的servlet项目（忽视笔者太菜），在此记录搭建的操作流程，希望帮到跟我一样刚入门的人，少走弯路~ 尊重劳动果实，转载注明出处！ 2.正式开始，新建工程首先，新建一个工程，如下图  选择Java">
+<meta name="twitter:image" content="https://i.imgur.com/taXNm27.png">
 
 
 
@@ -115,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/26/Setup-your-Tomcat-server-on-IDEA/"/>
 
 
 
 
 
-  <title>LAZI</title>
+  <title>Setup your Tomcat server on IDEA | LAZI</title>
   
 
 
@@ -140,8 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +241,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/26/Setup-your-Tomcat-server-on-IDEA/" itemprop="url">Setup your Tomcat server on IDEA</a></h1>
+          <h1 class="post-title" itemprop="name headline">Setup your Tomcat server on IDEA</h1>
         
 
         <div class="post-meta">
@@ -298,9 +323,7 @@
       
 
       
-        
-          
-            <h2 id="如何在InteliJ上配置Tomcat进行web开发"><a href="#如何在InteliJ上配置Tomcat进行web开发" class="headerlink" title="如何在InteliJ上配置Tomcat进行web开发"></a>如何在InteliJ上配置Tomcat进行web开发</h2><h3 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1.写在前面"></a>1.写在前面</h3><p>最近开始接触Java当中的web开发，由于习惯了InteliJ的“智能操作”，于是自己花了一整天研究如何在InteliJ上面部署Tomcat的servlet项目（忽视笔者太菜），在此记录搭建的操作流程，希望帮到跟我一样刚入门的人，少走弯路~</p>
+        <h2 id="如何在InteliJ上配置Tomcat进行web开发"><a href="#如何在InteliJ上配置Tomcat进行web开发" class="headerlink" title="如何在InteliJ上配置Tomcat进行web开发"></a>如何在InteliJ上配置Tomcat进行web开发</h2><h3 id="1-写在前面"><a href="#1-写在前面" class="headerlink" title="1.写在前面"></a>1.写在前面</h3><p>最近开始接触Java当中的web开发，由于习惯了InteliJ的“智能操作”，于是自己花了一整天研究如何在InteliJ上面部署Tomcat的servlet项目（忽视笔者太菜），在此记录搭建的操作流程，希望帮到跟我一样刚入门的人，少走弯路~</p>
 <p>尊重劳动果实，<a href="https://minhez.github.io/2018/10/26/Setup-your-Tomcat-server-on-IDEA/" target="_blank" rel="noopener">转载</a>注明出处！</p>
 <h3 id="2-正式开始，新建工程"><a href="#2-正式开始，新建工程" class="headerlink" title="2.正式开始，新建工程"></a>2.正式开始，新建工程</h3><p>首先，新建一个工程，如下图</p>
 <p><img src="https://i.imgur.com/taXNm27.png" alt=""></p>
@@ -353,8 +376,6 @@
 <p><img src="https://i.imgur.com/UM6LsXE.png" alt=""></p>
 <p>至此服务器配置完成。Enjoying~</p>
 
-          
-        
       
     </div>
     
@@ -369,287 +390,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MinheZ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAZI">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/16/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-16T15:15:24+08:00">
-                2018-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Tomcat-Service/" rel="tag"># Tomcat Service</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/Create-your-blog-on-GitHub/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MinheZ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAZI">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/16/Create-your-blog-on-GitHub/" itemprop="url">Create your blog on GitHub</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-16T10:09:02+08:00">
-                2018-10-16
-              </time>
+              <a href="/2018/10/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>声明：本文在windows10 64位系统下操作，其它系统仅供参考</p>
-<h2 id="1-搭建环境"><a href="#1-搭建环境" class="headerlink" title="1 搭建环境"></a>1 搭建环境</h2><p>首先需要下载2个软件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node.Js</span><br><span class="line">git</span><br></pre></td></tr></table></figure>
-<p>下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.Js</a>  <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a><br>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<p>具体的下载，安装就不用多说了，基本上下载完默认安装即可，安装的路径最好先记住。Git 安装的时候会弹出下面的窗口，我们选择第二个即可。这样我们在Windows的命令窗口也可以进行Git操作了。</p>
-<p><img src="https://i.imgur.com/hN62NQV.png" alt=""></p>
-<p>两个都安装完成之后，打开git bash分别输入node-v、npm -v和git–version，这3个命令能看到我们刚才安装软件的版本，如下图，即可进入下一个步骤。<br><img src="https://i.imgur.com/2PsqpdE.png" alt=""></p>
-<h2 id="2-配置GitHub"><a href="#2-配置GitHub" class="headerlink" title="2 配置GitHub"></a>2 配置GitHub</h2><h3 id="2-1-注册GitHub"><a href="#2-1-注册GitHub" class="headerlink" title="2.1 注册GitHub"></a>2.1 注册GitHub</h3><p>  在<a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>    官网注册一个账号。</p>
-<h3 id="2-2-SSH授权"><a href="#2-2-SSH授权" class="headerlink" title="2.2 SSH授权"></a>2.2 SSH授权</h3><h3 id="2-2-1-生成SSH-Key"><a href="#2-2-1-生成SSH-Key" class="headerlink" title="2.2.1 生成SSH Key"></a>2.2.1 生成SSH Key</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开Git Bash，输入ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>按3下回车（此处跳过密码设置），由于我已经设置过了，这里选择不覆盖。</p>
-<p><img src="https://i.imgur.com/bnSVXCu.png" alt=""><br>接着就会在C:\Users\Administrator.ssh目录下生成到id_rsa和id_rsa.pub两个文件，id_rsa是密钥，id_rsa.pub是公钥，接下来需要将id_rsa.pub的内容添加到GitHub上，这样本地的id_rsa密钥才能跟GitHub上的id_rsa.pub公钥进行配对，才能够授权成功。</p>
-<h4 id="2-2-2-在GitHub上添加SSH-Key"><a href="#2-2-2-在GitHub上添加SSH-Key" class="headerlink" title="2.2.2 在GitHub上添加SSH Key"></a>2.2.2 在GitHub上添加SSH Key</h4><p>在个人主页右上角上点击倒三角，进入Setting<br><img src="https://i.imgur.com/57zAVCm.png" alt=""><br>点击new SSH key，再把刚才的公钥复制粘贴进去。SSHKey添加成功之后，可以输入ssh-T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>进行测试，出现以下图片样式则证明成功。<br><img src="https://i.imgur.com/Mbj4th3.png" alt=""></p>
-<h2 id="创建GitHub仓库"><a href="#创建GitHub仓库" class="headerlink" title="创建GitHub仓库"></a>创建GitHub仓库</h2><p>这一波比较关键！！！下图是新建一个repositories（仓库），此处注意项目的名称一定是：你的名字+.github.io，例如笔者的是MinheZ.github.io。<br><img src="https://i.imgur.com/TznCa3E.png" alt=""></p>
-<h2 id="4-设置本地博客的配置"><a href="#4-设置本地博客的配置" class="headerlink" title="4 设置本地博客的配置"></a>4 设置本地博客的配置</h2><h3 id="4-1-安装Hexo"><a href="#4-1-安装Hexo" class="headerlink" title="4.1 安装Hexo"></a>4.1 安装Hexo</h3><p>在一个合适的地方创建一个文件夹，然后再文件夹空白处按住Shift+鼠标右键，在此处打开Git bash命令行窗口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在命令行输入 npm install -g hexo</span><br></pre></td></tr></table></figure></p>
-<p>注意：笔者在此过程中遇到过 E404报错，详细内容忘记截图=。=，原因是npm在国内被墙，使用镜像服务器就可以了，此处仅为读者提供一种思路，并不一定是有效方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
-<p>然后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入 npm install hexo --save</span><br></pre></td></tr></table></figure></p>
-<p>可以输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v 来检查hexo是否安装成功</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-2-初始化Hexo"><a href="#4-2-初始化Hexo" class="headerlink" title="4.2 初始化Hexo"></a>4.2 初始化Hexo</h3><p>在命令窗口中继续输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init，等待下载好之后输入hexo s</span><br></pre></td></tr></table></figure></p>
-<p>此时打开浏览器在地址栏输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就能看到自己搭建的本地博客<br><img src="https://i.imgur.com/YRfd6CJ.png" alt=""></p>
-<p>博客文章放在文件夹下面sorcerer/_posts文件夹，再进入看到一篇初始化hello-world.md。如果需要新建文章的话，在命令窗口输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">'filename'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4-3-发布博客"><a href="#4-3-发布博客" class="headerlink" title="4.3 发布博客"></a>4.3 发布博客</h3><p>复制我们Github项目地址，打开新建文件夹下面生成的_config.yml文件，在最下方修改<br><img src="https://i.imgur.com/TuGgb66.png" alt=""><br>注意：repo自己加上就好。冒号后面追加一个空格！接下来回到命令窗口，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>安装好Git上传插件之后，输入 hexo g，然后输入 hexo d就可以将我们的博客上传到我们的GitHub了，而且以后更新文章就只需要用这两个命令就可以了。这样别人也可以通过 <a href="https://yourname.github.io" target="_blank" rel="noopener">https://yourname.github.io</a> 来访问我们的博客了（开头一定要用https，yourname是你的github的名字）。</p>
-<h2 id="5-主题太丑怎么办"><a href="#5-主题太丑怎么办" class="headerlink" title="5 主题太丑怎么办"></a>5 主题太丑怎么办</h2><p>命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
-<p>等待下载完成之后，打开配置文件_config_yml，找到theme将next替换原来默认的landscape。然后在命令窗口下<br><code>bash
-输入 hexo clean, hexo g, hexo s, 本地确认样子之后再hexo d部署至GitHub</code><img src="https://i.imgur.com/k56iJO6.png" alt=""></p>
-<p>至此，博客环境就搭建完成，谢谢观看！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -659,129 +429,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/16/Java-JVM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MinheZ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LAZI">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/16/Java-JVM/" itemprop="url">Java JVM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-16T09:48:04+08:00">
-                2018-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Java-JVM"><a href="#Java-JVM" class="headerlink" title="Java JVM"></a>Java JVM</h1>
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -789,6 +441,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -809,8 +465,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -861,6 +526,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在InteliJ上配置Tomcat进行web开发"><span class="nav-number">1.</span> <span class="nav-text">如何在InteliJ上配置Tomcat进行web开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-写在前面"><span class="nav-number">1.1.</span> <span class="nav-text">1.写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-正式开始，新建工程"><span class="nav-number">1.2.</span> <span class="nav-text">2.正式开始，新建工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Tomcat-Configuration设置"><span class="nav-number">1.3.</span> <span class="nav-text">3.Tomcat Configuration设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-部署servlet到Tomcat服务器"><span class="nav-number">1.4.</span> <span class="nav-text">4.部署servlet到Tomcat服务器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -994,6 +675,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
