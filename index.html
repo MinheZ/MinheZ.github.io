@@ -229,6 +229,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/Intellij-IDEA-Spring-aop-报错-BeanCreationException-Error-creating-bean-with-name/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MinheZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAZI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/Intellij-IDEA-Spring-aop-报错-BeanCreationException-Error-creating-bean-with-name/" itemprop="url">Intellij IDEA Spring aop 报错 BeanCreationException: Error creating bean with name</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T21:08:28+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>笔者习惯使用InteliJ IDEA开发工具写Java代码。但是在使用Spring aop或者是aspectj框架时可能遇到如下错误，此处仅提取跟代码相关的关键地方。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalStateException: Failed to load ApplicationContext</span><br><span class="line"></span><br><span class="line">Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">'customerDao'</span> defined <span class="keyword">in</span> class path resource [applicationContext2.xml]: BeanPostProcessor before instantiation of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0'</span>: Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.aop.aspectj.AspectJPointcutAdvisor]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: Could not initialize class org.aspectj.util.LangUtil</span><br></pre></td></tr></table></figure>
+<p>原因是Spring编程必须手动导入spring-aop.jar, aspectjrt.jar, aopalliance_1.0.jar, aspectjweaver-1.9.1.jar这4个jar包。</p>
+<p><a href="链接：https://pan.baidu.com/s/1JnK4eG__DpN-QbbyHile2A">下载地址</a>  提取码：dexw </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/Spring4_day01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1264,7 +1387,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1277,7 +1400,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
