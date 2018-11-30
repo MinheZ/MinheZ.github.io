@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="redis," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1 redis介绍1.1 什么是NoSQLNoSQL，泛指非关系型数据库，即Not-Only SQL，它可以作为关系型数据库的良好补充。随着互联网web2.0网站的兴起，非关系型的数据库现在成了一个极其热门的新领域，非关系数据库产品的发展非常迅速。">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/Redis/index.html">
+<meta property="og:site_name" content="LAZI">
+<meta property="og:description" content="1 redis介绍1.1 什么是NoSQLNoSQL，泛指非关系型数据库，即Not-Only SQL，它可以作为关系型数据库的良好补充。随着互联网web2.0网站的兴起，非关系型的数据库现在成了一个极其热门的新领域，非关系数据库产品的发展非常迅速。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/ezm0bbm.png">
+<meta property="og:image" content="https://i.imgur.com/Dn18HsE.png">
+<meta property="og:image" content="https://i.imgur.com/XViFXxa.png">
+<meta property="og:image" content="https://i.imgur.com/zj6SSru.png">
+<meta property="og:image" content="https://i.imgur.com/xbfjrDN.png">
+<meta property="og:image" content="https://i.imgur.com/8H2i8je.png">
+<meta property="og:image" content="https://i.imgur.com/AVMcwCq.png">
+<meta property="og:image" content="https://i.imgur.com/zbExwqh.png">
+<meta property="og:image" content="https://i.imgur.com/e6DWLbx.png">
+<meta property="og:image" content="https://i.imgur.com/3edBglo.png">
+<meta property="og:image" content="https://i.imgur.com/tmSof2d.png">
+<meta property="og:image" content="https://i.imgur.com/mYzWKln.png">
+<meta property="og:updated_time" content="2018-11-30T00:38:16.990Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="1 redis介绍1.1 什么是NoSQLNoSQL，泛指非关系型数据库，即Not-Only SQL，它可以作为关系型数据库的良好补充。随着互联网web2.0网站的兴起，非关系型的数据库现在成了一个极其热门的新领域，非关系数据库产品的发展非常迅速。">
+<meta name="twitter:image" content="https://i.imgur.com/ezm0bbm.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/Redis/"/>
+
+
+
+
+
+  <title>Redis | LAZI</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LAZI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="作者">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LAZI">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T12:39:49+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/27/Redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/27/Redis/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/27/Redis/" class="leancloud_visitors" data-flag-title="Redis">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-redis介绍"><a href="#1-redis介绍" class="headerlink" title="1 redis介绍"></a>1 redis介绍</h2><h3 id="1-1-什么是NoSQL"><a href="#1-1-什么是NoSQL" class="headerlink" title="1.1 什么是NoSQL"></a>1.1 什么是NoSQL</h3><p>NoSQL，泛指非关系型数据库，即Not-Only SQL，它可以作为关系型数据库的良好补充。随着互联网web2.0网站的兴起，非关系型的数据库现在成了一个极其热门的新领域，非关系数据库产品的发展非常迅速。</p>
+<a id="more"></a>
+<p>而传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，例如： </p>
+<ol>
+<li>High performance：对数据库高并发读写的需求web2.0网站要根据用户个性化信息来实时生成动态页面和提供动态信息，所以基本上无法使用动态页面静态化技术，因此数据库并发负载非常高，往往要达到每秒上万次读写请求。关系数据库应付上万次SQL查询还勉强顶得住，但是应付上万次SQL写数据请求，硬盘IO就已经无法承受了。其实对于普通的BBS网站，往往也存在对高并发写请求的需求，例如网站的实时统计在线用户状态，记录热门帖子的点击次数，投票计数等，因此这是一个相当普遍的需求。</li>
+<li>Huge Storage：对海量数据的高效率存储和访问的需求<br>类似Facebook，twitter，Friendfeed这样的SNS网站，每天用户产生海量的用户动态，以Friendfeed为例，一个月就达到了2.5亿条用户动态，对于关系数据库来说，在一张2.5亿条记录的表里面进行SQL查询，效率是极其低下乃至不可忍受的。再例如大型web网站的用户登录系统，例如腾讯，盛大，动辄数以亿计的帐号，关系数据库也很难应付。<br>3、High Scalability &amp;&amp; High Availability- 对数据库的高可扩展性和高可用性的需求<br>在基于web的架构当中，数据库是最难进行横向扩展的，当一个应用系统的用户量和访问量与日俱增的时候，你的数据库却没有办法像web server和app server那样简单的通过添加更多的硬件和服务节点来扩展性能和负载能力。对于很多需要提供24小时不间断服务的网站来说，对数据库系统进行升级和扩展是非常痛苦的事情，往往需要停机维护和数据迁移，为什么数据库不能通过不断的添加服务器节点来实现扩展呢？ </li>
+</ol>
+<p>NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。</p>
+<h3 id="1-2-什么是redis"><a href="#1-2-什么是redis" class="headerlink" title="1.2 什么是redis"></a>1.2 什么是redis</h3><p>redis是用C语言开发的一个开源的高性能键值对(key-value)数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止redis支持的键值数据类型如下：字符串类型、散列类型、列表类型、集合类型、有序集合类型。</p>
+<h3 id="1-3-redis的应用场景"><a href="#1-3-redis的应用场景" class="headerlink" title="1.3 redis的应用场景"></a>1.3 redis的应用场景</h3><ul>
+<li>缓存（数据查询、短连接、新闻内容、商品内容等等）。（最多使用）</li>
+<li>分布式集群架构中的session分离。</li>
+<li>聊天室的在线好友列表。</li>
+<li>任务队列。（秒杀、抢购、12306等等）</li>
+<li>应用排行榜。</li>
+<li>网站访问统计。</li>
+<li>数据过期处理（可以精确到毫秒）</li>
+</ul>
+<hr>
+<h2 id="2-测试环境"><a href="#2-测试环境" class="headerlink" title="2 测试环境"></a>2 测试环境</h2><p>redis需要安装在linux服务器上运行测试，本教程使用 linux虚拟机及xshell客户端进行功能测试。</p>
+<hr>
+<h2 id="3-安装运行redis"><a href="#3-安装运行redis" class="headerlink" title="3 安装运行redis"></a>3 安装运行redis</h2><h3 id="3-1-redis安装环境"><a href="#3-1-redis安装环境" class="headerlink" title="3.1 redis安装环境"></a>3.1 redis安装环境</h3><p>redis是C语言开发，建议在linux上运行，本教程使用Centos7作为安装环境。<br>安装redis需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境，需要安装<br>    gcc：yum install gcc-c++</p>
+<h3 id="3-2-redis安装"><a href="#3-2-redis安装" class="headerlink" title="3.2 redis安装"></a>3.2 redis安装</h3><ul>
+<li>版本说明：笔者使用的是redis3.0版本</li>
+<li>源码下载：从<a href="http://download.redis.io/releases/" target="_blank" rel="noopener">redis官网</a>,并将文件拷贝至/home/user/local/redis/下</li>
+<li>解压源码：tar -zxvf redis-3.0.7.tar.gz<br>首先将windows下的redis-3.0.7.tar.gz通过xshell拷贝到虚拟机/home根目录下，直接将文件拖拽至xshell输入框即可<br><img src="https://i.imgur.com/ezm0bbm.png" alt=""><br>接下来在local/下新建redis/文件夹，再将redis-3.0.7.tar.gz拷贝至redis文件夹下，再进行解压<br><img src="https://i.imgur.com/Dn18HsE.png" alt=""><br>然后将redis安装到指定文件夹bin下面，如果没有自己用mkdir新建就行。再将redis-3.0.7文件夹下面的redis.conf拷贝到安装bin/目录下，并且查看当前目录下的文件权限<br><img src="https://i.imgur.com/XViFXxa.png" alt=""></li>
+</ul>
+<h3 id="3-3-redis启动"><a href="#3-3-redis启动" class="headerlink" title="3.3 redis启动"></a>3.3 redis启动</h3><h4 id="3-3-1-前端模式启动"><a href="#3-3-1-前端模式启动" class="headerlink" title="3.3.1 前端模式启动"></a>3.3.1 前端模式启动</h4><p>直接在bin目录底下输入命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server</span><br></pre></td></tr></table></figure></p>
+<p>即可将redis在前端运行，但是此方法一旦关闭xshell窗口，则断开连接。<br><img src="https://i.imgur.com/zj6SSru.png" alt=""></p>
+<h4 id="3-3-2-后端模式启动"><a href="#3-3-2-后端模式启动" class="headerlink" title="3.3.2 后端模式启动"></a>3.3.2 后端模式启动</h4><p>修改redis.conf文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用vi redis.conf命令，将daemonize no修改成daemonize yes。按i进行编辑，esc保存，:wq退出修改</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/xbfjrDN.png" alt=""><br>启动之后，另外打开一个xshell连接当前虚拟机，在bin/目录下使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli连接redis</span><br><span class="line">用 <span class="built_in">set</span> key1 1 向redis存入数据，并且使用 get key1 读取出数据</span><br></pre></td></tr></table></figure></p>
+<p>使用后端启动的方式在关闭启动窗口之后仍然能够读取redis中的数据<br><img src="https://i.imgur.com/8H2i8je.png" alt=""></p>
+<h3 id="3-4-redis停止"><a href="#3-4-redis停止" class="headerlink" title="3.4 redis停止"></a>3.4 redis停止</h3><p>强行终止Redis进程可能会导致redis持久化数据丢失。正确停止Redis的方式应该是向Redis发送SHUTDOWN命令，方法为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown,关闭之后，当再次访问时被拒绝</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/AVMcwCq.png" alt=""></p>
+<hr>
+<h2 id="4-Jedis"><a href="#4-Jedis" class="headerlink" title="4 Jedis"></a>4 Jedis</h2><h3 id="4-1-Jedis介绍"><a href="#4-1-Jedis介绍" class="headerlink" title="4.1 Jedis介绍"></a>4.1 Jedis介绍</h3><p>Redis不仅是使用命令来操作，现在基本上主流的语言都有客户端支持，比如java、C、C#、C++、php、Node.js、Go等。<br>在官方网站里列一些Java的客户端，有Jedis、Redisson、Jredis、JDBC-Redis、等其中官方推荐使用Jedis和Redisson。 在企业中用的最多的就是Jedis，Jedis同样也是托管在github上，地址：<a href="https://github.com/xetorthio/jedis" target="_blank" rel="noopener">https://github.com/xetorthio/jedis</a></p>
+<h3 id="4-3-通过Jedis连接redis单机"><a href="#4-3-通过Jedis连接redis单机" class="headerlink" title="4.3 通过Jedis连接redis单机"></a>4.3 通过Jedis连接redis单机</h3><p>通过创建单实例Jedis对象连接redis服务，代码如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">   public void <span class="function"><span class="title">jedisTest1</span></span>()&#123;</span><br><span class="line">       // 创建和redis的连接</span><br><span class="line">       Jedis jedis = new Jedis(<span class="string">"192.168.93.200"</span>,6379);</span><br><span class="line">       // 存入</span><br><span class="line">       jedis.set(<span class="string">"key2"</span>,<span class="string">"2"</span>);</span><br><span class="line">       // 取出</span><br><span class="line">       System.out.println(jedis.get(<span class="string">"key2"</span>));</span><br><span class="line">       // 关闭jedis</span><br><span class="line">       jedis.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-2-1-连接超时解决"><a href="#4-2-1-连接超时解决" class="headerlink" title="4.2.1 连接超时解决"></a>4.2.1 连接超时解决</h4><p>由于linux防火墙默认开启，redis的服务端口6379并不在开放规则之内，所有需要将此端口开放访问或者关闭防火墙。<br>关闭防火墙命令：systemctl stop firewalld.service<br>如果是修改防火墙规则，可以修改：/etc/sysconfig/iptables文件</p>
+<h4 id="4-2-2-使用连接池连接"><a href="#4-2-2-使用连接池连接" class="headerlink" title="4.2.2 使用连接池连接"></a>4.2.2 使用连接池连接</h4><p>通过单实例连接redis不能对redis连接进行共享，可以使用连接池对redis连接进行共享，提高资源利用率，使用jedisPool连接redis服务，如下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">   public void <span class="function"><span class="title">jedisPoolTest</span></span>()&#123;</span><br><span class="line">       // 创建连接池</span><br><span class="line">       JedisPool jedisPool = new JedisPool(<span class="string">"192.168.93.200"</span>,6379);</span><br><span class="line">       // 从连接池中获取连接</span><br><span class="line">       Jedis jedis = jedisPool.getResource();</span><br><span class="line">       // 存入数据</span><br><span class="line">       jedis.set(<span class="string">"key3"</span>,<span class="string">"3"</span>);</span><br><span class="line">       // 取出</span><br><span class="line">       System.out.println(jedis.get(<span class="string">"key3"</span>));</span><br><span class="line">       // 一定要关闭，关闭连接之后会自动回到连接池给别人使用，如果一直不关闭会死机</span><br><span class="line">       jedis.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-2-3-Jedis与Spring整合"><a href="#4-2-3-Jedis与Spring整合" class="headerlink" title="4.2.3 Jedis与Spring整合"></a>4.2.3 Jedis与Spring整合</h4><p>配置Spring配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">       xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns:mvc=<span class="string">"http://www.springframework.org/schema/mvc"</span></span><br><span class="line">       xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">       xmlns:aop=<span class="string">"http://www.springframework.org/schema/aop"</span> xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">       xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/mvc</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/context</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/context/spring-context-3.2.xsd</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/aop</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/tx</span></span><br><span class="line"><span class="string">		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd "</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--连接池配置--&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"jedisPoolConfig"</span> class=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span><br><span class="line">        &lt;!--最大连接数--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"maxTotal"</span> value=<span class="string">"30"</span>/&gt;</span><br><span class="line">        &lt;!--最大空闲连接数--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"maxIdle"</span> value=<span class="string">"10"</span>/&gt;</span><br><span class="line">        &lt;!--每次释放连接的最大数--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"numTestsPerEvictionRun"</span> value=<span class="string">"1024"</span>/&gt;</span><br><span class="line">        &lt;!--释放连接扫描间隔（毫秒）--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"minEvictableIdleTimeMillis"</span> value=<span class="string">"1800000"</span>/&gt;</span><br><span class="line">        &lt;!--连接空闲后多久释放，当空闲时间&gt;该值且空闲连接&gt;最大空闲连接数时，直接释放--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"softMinEvictableIdleTimeMillis"</span> value=<span class="string">"10000"</span>/&gt;</span><br><span class="line">        &lt;!--获取连接时的最大等待毫秒数，小于零：阻塞不确定的时间，默认-1--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"maxWaitMillis"</span> value=<span class="string">"1500"</span>/&gt;</span><br><span class="line">        &lt;!--在获取连接的时候检查有效性，默认<span class="literal">false</span>--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"testOnBorrow"</span> value=<span class="string">"false"</span>/&gt;</span><br><span class="line">        &lt;!--在空闲时检查有效性，默认<span class="literal">false</span>--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"testWhileIdle"</span> value=<span class="string">"true"</span>/&gt;</span><br><span class="line">        &lt;!--连接耗尽时是否阻塞，<span class="literal">false</span>报异常，<span class="literal">true</span>阻塞直到超时，默认<span class="literal">true</span>--&gt;</span><br><span class="line">        &lt;property name=<span class="string">"blockWhenExhausted"</span> value=<span class="string">"false"</span>/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--redis单机，通过连接池--&gt;</span><br><span class="line">    &lt;bean id=<span class="string">"jedisPoll"</span> class=<span class="string">"redis.clients.jedis.JedisPool"</span> destroy-method=<span class="string">"close"</span>&gt;</span><br><span class="line">        &lt;constructor-arg name=<span class="string">"poolConfig"</span> ref=<span class="string">"jedisPoolConfig"</span>/&gt;</span><br><span class="line">        &lt;constructor-arg name=<span class="string">"host"</span> value=<span class="string">"192.168.93.200"</span>/&gt;</span><br><span class="line">        &lt;constructor-arg name=<span class="string">"port"</span> value=<span class="string">"6379"</span>/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private ApplicationContext applicationContext;</span><br><span class="line">   @Before</span><br><span class="line">   public void <span class="function"><span class="title">setUp</span></span>()&#123;</span><br><span class="line">       applicationContext = new ClassPathXmlApplicationContext(<span class="string">"classpath:ApplicationContext.xml"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   @Test</span><br><span class="line">   public void <span class="function"><span class="title">jedisSpringTest</span></span>()&#123;</span><br><span class="line">       JedisPool jedisPool = (JedisPool) applicationContext.getBean(<span class="string">"jedisPoll"</span>);</span><br><span class="line">       Jedis jedis = jedisPool.getResource();</span><br><span class="line">       jedis.set(<span class="string">"name"</span>,<span class="string">"minhe"</span>);</span><br><span class="line">       System.out.println(jedis.get(<span class="string">"name"</span>));</span><br><span class="line">       //jedis.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-持久化"><a href="#5-持久化" class="headerlink" title="5 持久化"></a>5 持久化</h2><p>Redis的高性能是由于其将所有数据都存储在了内存中，为了使Redis在重启之后仍能保证数据不丢失，需要将数据从内存中同步到硬盘中，这一过程就是持久化。<br>Redis支持两种方式的持久化，一种是RDB方式，一种是AOF方式。可以单独使用其中一种或将二者结合使用。</p>
+<h3 id="5-1-RDB持久化"><a href="#5-1-RDB持久化" class="headerlink" title="5.1 RDB持久化"></a>5.1 RDB持久化</h3><p>RDB方式的持久化是通过快照(snapshotting)完成的，当符合一定条件时redis会自动将内存中的数据进行快照并持久化到硬盘。<br>RDB是redis默认采用的持久化方式，在redis.conf配置文件中有默认如下配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br></pre></td></tr></table></figure></p>
+<p>save 开头的一行就是持久化配置，可以配置多个条件（每行配置一个条件），每个条件之间是“或”的关系，“save 900 1”表示15分钟（900秒钟）内至少1个键被更改则进行快照，“save 300 10”表示5分钟（300秒）内至少10个键被更改则进行快照。</p>
+<p>在redis.conf中：配置dir指定RDB快照文件的位置；配置dbfilename指定RDB快照文件的名称。<br>redis在启动后会自动读取RDB快照文件，将数据从硬盘载入到内存中 。根据数据量大小与结构和服务器的性能不同，时间也不相同。<br>问题总结：RDB方式实现持久化，一旦redis异常退出之后，就会丢失最后一次快照以后更改的所有数据。</p>
+<h3 id="5-2-AOF持久化"><a href="#5-2-AOF持久化" class="headerlink" title="5.2 AOF持久化"></a>5.2 AOF持久化</h3><p>默认情况下Redis没有开启AOF（append only file）方式的持久化，可以通过appendonly参数开启：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br></pre></td></tr></table></figure></p>
+<p>开启AOF持久化后每执行一条会更改Redis中的数据的命令，Redis就会将该命令写入硬盘中的AOF文件。AOF文件的保存位置和RDB文件的位置相同，都是通过dir参数设置的，默认的文件名是appendonly.aof，可以通过appendfilename参数修改：appendfilename appendonly.aof</p>
+<h2 id="6-主从复制"><a href="#6-主从复制" class="headerlink" title="6 主从复制"></a>6 主从复制</h2><p>持久化保证了即使redis服务重启也不会丢失数据，因为redis服务重启后会将硬盘上持久化的数据恢复到内存中，但是当redis服务器的硬盘损坏了可能会导致数据丢失，如果通过redis的主从复制机制就可以避免这种单点故障，如下图：<br><img src="https://i.imgur.com/zbExwqh.png" alt=""><br>说明：</p>
+<ul>
+<li>主redis中的数据有2个副本(replication)即从redis1和从redis2，即使一台redis服务器宕机，其它两台redis服务器也可以继续提供服务。</li>
+<li>主redis中的数据和从redis上的数据保持实时同步，当主redis写入数据时通过主从复制机制会复制到两个从redis服务器上面。</li>
+<li>只有一个主redis服务器，可以有多个从redis服务器。</li>
+<li>主从复制不会阻塞master，在同步数据时，master可以继续处理client请求。</li>
+<li>一个redis服务器，既可以是master，也可以是slave。</li>
+</ul>
+<h3 id="6-1-从redis配置"><a href="#6-1-从redis配置" class="headerlink" title="6.1 从redis配置"></a>6.1 从redis配置</h3><p>在redis文件夹下新建一个slave文件夹，用来放bin/目录下的所有文件，模拟2台redis服务器。修改slave中的redis.conf，将端口号修改成6380<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/<span class="built_in">local</span>/redis/</span><br><span class="line">mkdir slave/</span><br><span class="line"><span class="built_in">cd</span> /home/user/<span class="built_in">local</span>/redis/</span><br><span class="line">cp bin/* /home/user/<span class="built_in">local</span>/redis/slave/</span><br></pre></td></tr></table></figure></p>
+<p>修改redis服务器上的redis.conf文件，添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof 192.168.93.201 6380</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/e6DWLbx.png" alt=""></p>
+<h4 id="6-1-1-主从复制的过程"><a href="#6-1-1-主从复制的过程" class="headerlink" title="6.1.1 主从复制的过程"></a>6.1.1 主从复制的过程</h4><p>在redis2.8版本之前的主从复制如下图<br><img src="https://i.imgur.com/3edBglo.png" alt=""><br>复制过程说明：</p>
+<ol>
+<li>slave启动，slave会建立起与master的链接，发送sync命令。</li>
+<li>master启动后一个后台进程将数据库快照保存到RDB文件中（注意：此时如果生成RDB文件过程中存在写数据操作会导致RDB文件和当前redis数据不一致，所以此时master主进程会开始收集写命令并缓存起来）。</li>
+<li>master发送RDB文件给slave</li>
+<li>slave将文件保存到磁盘上，然后加载到内存中恢复</li>
+<li>master将缓存的命令转发给slave。（注意：后续master收到的写命令都会通过开始建立连接发送给salve。当master和slave的链接断开时，slave可以自动连接。如果master同时收到多个slave发送来的同步连接命令，只会启动一个进程来写数据库镜像，然后发送给所有的slave。）</li>
+</ol>
+<p>一旦主redis宕机，从redis服务器只提供读服务。</p>
+<p>在模拟主从复制的时候，必须先启动master再启动slave，当两个全部启动完成之后，如下图<br><img src="https://i.imgur.com/tmSof2d.png" alt=""><br>接下来可以用get语句来查看之前存进去的key1的值，注意，默认启动的是master，启动slave则要加上对应的端口号<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./redis-server redis.config</span><br><span class="line">./redis-cli</span><br><span class="line">get key1</span><br><span class="line"></span><br><span class="line">./redis-cli shutdown</span><br><span class="line">./redis-cli -p 6380</span><br><span class="line">get key1</span><br></pre></td></tr></table></figure></p>
+<p>如图所示，当在slave上面set key2的时候提示slave是只读模式。<br><img src="https://i.imgur.com/mYzWKln.png" alt=""></p>
+<pre><code>本文作者：MinheZ
+版权声明：转载请注明出处！
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"><i class="fa fa-tags"></i> redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/22/lucene-solr/" rel="next" title="lucene&solr">
+                <i class="fa fa-chevron-left"></i> lucene&solr
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">作者</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MinheZ" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-redis介绍"><span class="nav-number">1.</span> <span class="nav-text">1 redis介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是NoSQL"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是NoSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-什么是redis"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 什么是redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-redis的应用场景"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 redis的应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-测试环境"><span class="nav-number">2.</span> <span class="nav-text">2 测试环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装运行redis"><span class="nav-number">3.</span> <span class="nav-text">3 安装运行redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-redis安装环境"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 redis安装环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-redis安装"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 redis安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-redis启动"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 redis启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-前端模式启动"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 前端模式启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-后端模式启动"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 后端模式启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-redis停止"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 redis停止</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Jedis"><span class="nav-number">4.</span> <span class="nav-text">4 Jedis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Jedis介绍"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Jedis介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-通过Jedis连接redis单机"><span class="nav-number">4.2.</span> <span class="nav-text">4.3 通过Jedis连接redis单机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-连接超时解决"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 连接超时解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-使用连接池连接"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 使用连接池连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-Jedis与Spring整合"><span class="nav-number">4.2.3.</span> <span class="nav-text">4.2.3 Jedis与Spring整合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-持久化"><span class="nav-number">5.</span> <span class="nav-text">5 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-RDB持久化"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 RDB持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-AOF持久化"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 AOF持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-主从复制"><span class="nav-number">6.</span> <span class="nav-text">6 主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-从redis配置"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 从redis配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-1-主从复制的过程"><span class="nav-number">6.1.1.</span> <span class="nav-text">6.1.1 主从复制的过程</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MinheZ</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'aSulM8BWxLPyfBWSuQmM3cCq-gzGzoHsz',
+        appKey: 'C1FNK3gJvfGMnp6znnlW8Jxb',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("oaKwv34yPqBF70Ftoa4scUl8-gzGzoHsz", "0bFo1lCCBWCR3PG8E4jbQ1q9");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
