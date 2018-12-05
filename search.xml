@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[解决dubbo-admin不能在jdk1.8环境下运行的问题]]></title>
+    <url>%2F2018%2F12%2F05%2F%E8%A7%A3%E5%86%B3dubbo-admin%E4%B8%8D%E8%83%BD%E5%86%8Djdk1-8%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BF%90%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[#问题描述在用dubbo作为中间层，使用了dubbo的监视器admin，在Tomcat上发布的时候遇到下图错误 提示的是Context初始化失败，这种是由于dubbo只能兼容jdk1.7以下的版本，那么如何解决这种版本冲突问题呢？前往 https://github.com/apache/incubator-dubbo选择2.5x分支，下载dubbo源码笔者用IDEA打开刚才下载好的源码，在dubbo-admin下修改pom.xml webx的依赖改为3.1.6版本 12345&lt;dependency&gt; &lt;groupId&gt;com.alibaba.citrus&lt;/groupId&gt; &lt;artifactId&gt;citrus-webx-all&lt;/artifactId&gt; &lt;version&gt;3.1.6&lt;/version&gt; &lt;/dependency&gt; 添加velocity的依赖，版本为1.7 12345&lt;dependency&gt; &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt; &lt;artifactId&gt;velocity&lt;/artifactId&gt; &lt;version&gt;1.7&lt;/version&gt; &lt;/dependency&gt; 对依赖项dubbo添加exclusion，去除其对低版本spring的依赖 123456789101112&lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;dubbo&lt;/artifactId&gt; &lt;version&gt;$&#123;project.parent.version&#125;&lt;/version&gt; &lt;exclusions&gt; &lt;exclusion&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring&lt;/artifactId&gt; &lt;/exclusion&gt; &lt;/exclusions&gt; &lt;/dependency&gt; 然后重新编译该项目，编译的过程中可能会出现很多警告，其实都是可以忽略不管的。也可以在本地配置Tomcat测试一下是否修改后的工程能否兼容jdk1.8，如下图启动Tomcat，在自己设置的TomcatURL下如果能进入如下页面，说明此时的dubbo已经修改成功然后重新发布项目，并添加到Linux中，重新在Linux上启动Tomcat即可。 以下是重新编译发布的dubbo-admin-2.5.10.war 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
+      <categories>
+        <category>环境配置异常</category>
+      </categories>
+      <tags>
+        <tag>dubbo-admin不能在jdk1.8环境下运行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[dubbo向zookeeper发布服务报错：连接超时]]></title>
     <url>%2F2018%2F12%2F05%2Fdubbo%E5%90%91zookeeper%E5%8F%91%E5%B8%83%E6%9C%8D%E5%8A%A1%E6%8A%A5%E9%94%99%EF%BC%9A%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%2F</url>
     <content type="text"><![CDATA[在启动Spring+dubbo+zookeeper的项目中，使用zookeeper作为注册中心，dubbo向其发布服务的时候出现如下错误 错误的截图如下，提示连接超时 问题来了，在服务发布时可能 连接不上 zookeeper注册中心，在zookeper部署的服务器上我们需要将zookeeper使用的端口默认为2181 暴露出来否则，zookeeper将连接不上就会报错连接超时。下面说说如何配置zookeeper部署的服务器，使得2181端口暴露出来（2181是zookeeper默认的端口） 1：执行下面的命令 （下面的4个指令的作用是centOS默认使用的是firewall作为防火墙，把firewall停掉装个iptable服务）12345systemctl stop firewalld systemctl mask firewalldyum install -y iptables yum install iptables-services 由于我自己装的CentOS7是最小版本，不知为何并没有自带firewall。 2：修改 iptables 文件 暴露 2181 端口 (编辑内容为 下图的红线部分)1vi /etc/sysconfig/iptables 然后添加下图语句，重启iptables服务就行了 service iptables restart 注：这个只是我个人问题的解决方案，不一定对所有人有效，但是可以试一试。毕竟在百度上找了其它很多解决方案都不行。 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
