@@ -72,7 +72,7 @@
     <url>%2F2018%2F11%2F05%2FIntellij-IDEA-Spring-aop-%E6%8A%A5%E9%94%99-BeanCreationException-Error-creating-bean-with-name%2F</url>
     <content type="text"><![CDATA[笔者习惯使用InteliJ IDEA开发工具写Java代码。但是在使用Spring aop或者是aspectj框架时可能遇到如下错误，此处仅提取跟代码相关的关键地方。 123java.lang.IllegalStateException: Failed to load ApplicationContextCaused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'customerDao' defined in class path resource [applicationContext2.xml]: BeanPostProcessor before instantiation of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.aop.aspectj.AspectJPointcutAdvisor#0': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.aop.aspectj.AspectJPointcutAdvisor]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: Could not initialize class org.aspectj.util.LangUtil 原因是Spring编程必须手动导入spring-aop.jar, aspectjrt.jar, aopalliance_1.0.jar, aspectjweaver-1.9.1.jar这4个jar包。 下载地址 提取码：dexw 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
       <categories>
-        <category>Intellij IDEA Spring aop ERROR！</category>
+        <category>环境配置异常</category>
       </categories>
       <tags>
         <tag>Intellij IDEA Spring aop ERROR！</tag>
