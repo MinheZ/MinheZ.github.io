@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[日常写bug&日常debug]]></title>
+    <url>%2F2018%2F12%2F07%2F%E6%97%A5%E5%B8%B8%E5%86%99bug-%E6%97%A5%E5%B8%B8debug%2F</url>
+    <content type="text"><![CDATA[Java读取带空格的文件路径，其中空格变成“%20”。12345conf = conf.replace("classpath:", this.getClass().getResource("/").getPath());抛出异常：java.io.FileNotFoundException: E:\ZMH\Java\Java%20EE\TaoTaoShop\taotaomanagerweb\target\classes\resource\client.conf (ϵͳÕҲ»µ½)解决方法：conf = URLDecoder.decode(conf,"utf-8"); to be continue…or not to be continue…12 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
+      <categories>
+        <category>bug me</category>
+      </categories>
+      <tags>
+        <tag>debug</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[将zookeeper设置开机启动]]></title>
     <url>%2F2018%2F12%2F07%2F%E5%B0%86zookeeper%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%2F</url>
     <content type="text"><![CDATA[最近在研究分布式系统，在搭建环境的时候遇到了一些小问题。笔者主机为windows10 64位，虚拟机是CentOS7。具体是zookeeper安装完成之后，并且能够与主机正常进行通信，但是按照网上常规的方法设置开机自启动时失败。 添加自启动的方法如下1234打开 vi /etc/rc.d/rc.local增加下面两句话（JAVA_HOME配置自己对应版本、目录就行）export JAVA_HOME=/usr/java/jdk1.8.0_191/home/zookeeper/zookeeper-3.4.6/bin/zkServer.sh start 但是在测试的时候发现重启之后zookeeper并没有自启动，最后发现，在centos7中, /etc/rc.d/rc.local 文件的权限被降低了，需要给rc.local 文件增加可执行的权限1chmod +x /etc/rc.d/rc.local 查看是否添加成功1chkconfig --list 再次重启问题解决。 追加：与此同时，笔者在搭建分布式存储fastDFS的时候也同样遇到了fdfs_trackerd,fdfs_storaged无法自启动的问题，同样用上述方法解决。 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
