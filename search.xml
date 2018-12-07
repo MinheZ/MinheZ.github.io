@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[日常写bug&日常debug]]></title>
     <url>%2F2018%2F12%2F07%2F%E6%97%A5%E5%B8%B8%E5%86%99bug-%E6%97%A5%E5%B8%B8debug%2F</url>
-    <content type="text"><![CDATA[Java读取带空格的文件路径，其中空格变成“%20”。12345conf = conf.replace("classpath:", this.getClass().getResource("/").getPath());抛出异常：java.io.FileNotFoundException: E:\ZMH\Java\Java%20EE\TaoTaoShop\taotaomanagerweb\target\classes\resource\client.conf (ϵͳÕҲ»µ½)解决方法：conf = URLDecoder.decode(conf,"utf-8"); to be continue…or not to be continue…12 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
+    <content type="text"><![CDATA[每天不是在调bug，就是在制造bug的路上… Java读取带空格的文件路径，其中空格变成“%20”。12345conf = conf.replace("classpath:", this.getClass().getResource("/").getPath());抛出异常：java.io.FileNotFoundException: E:\ZMH\Java\Java%20EE\TaoTaoShop\taotaomanagerweb\target\classes\resource\client.conf (ϵͳÕҲ»µ½)解决方法：conf = URLDecoder.decode(conf,"utf-8"); to be continue…or not to be continue…12 本文作者：MinheZ 版权声明：转载请注明出处！]]></content>
       <categories>
         <category>bug me</category>
       </categories>

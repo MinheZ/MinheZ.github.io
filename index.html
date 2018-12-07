@@ -421,16 +421,14 @@
 
       
         
-          
-            <ol>
-<li>Java读取带空格的文件路径，其中空格变成“%20”。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conf = conf.replace(<span class="string">"classpath:"</span>, this.getClass().getResource(<span class="string">"/"</span>).getPath());</span><br><span class="line">抛出异常：java.io.FileNotFoundException: E:\ZMH\Java\Java%20EE\TaoTaoShop\taotaomanagerweb\target\classes\resource\client.conf (ϵͳÕҲ»µ½)</span><br><span class="line"></span><br><span class="line">解决方法：</span><br><span class="line">conf = URLDecoder.decode(conf,<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>to be continue…<br>or not to be continue…<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<pre><code>本文作者：MinheZ
-版权声明：转载请注明出处！
-</code></pre>
-          
+          <p>每天不是在调bug，就是在制造bug的路上…</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/07/日常写bug-日常debug/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
